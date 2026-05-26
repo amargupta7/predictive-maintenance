@@ -2,7 +2,6 @@ from huggingface_hub.utils import RepositoryNotFoundError, HfHubHTTPError
 from huggingface_hub import HfApi, create_repo
 import os
 
-from google.colab import userdata
 hf_token = os.getenv("HF_TOKEN")
 
 repo_id = "amarg7/predictive_maintenance"
