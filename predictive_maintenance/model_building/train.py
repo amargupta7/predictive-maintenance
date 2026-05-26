@@ -13,6 +13,8 @@ from sklearn.model_selection import GridSearchCV
 from sklearn.metrics import accuracy_score, classification_report, recall_score, confusion_matrix, ConfusionMatrixDisplay
 from huggingface_hub import login, HfApi, create_repo
 from huggingface_hub.utils import RepositoryNotFoundError
+import mlflow
+import mlflow.sklearn
 # for model serialization
 import joblib
 
@@ -29,10 +31,10 @@ mlflow.set_experiment("predictive-maintenance-prod")
 # 1. Load the 4 files from Hugging Face
 repo_id = "amarg7/predictive_maintenance"
 
-X_train = pd.read_csv(f"hf://datasets/{repo_id}/X_train.csv")
-X_test = pd.read_csv(f"hf://datasets/{repo_id}/X_test.csv")
-y_train = pd.read_csv(f"hf://datasets/{repo_id}/y_train.csv").values.ravel()
-y_test = pd.read_csv(f"hf://datasets/{repo_id}/y_test.csv").values.ravel()
+X_train = pd.read_csv(f"hf://datasets/{repo_id}/Xtrain.csv")
+X_test = pd.read_csv(f"hf://datasets/{repo_id}/Xtest.csv")
+y_train = pd.read_csv(f"hf://datasets/{repo_id}/ytrain.csv").values.ravel()
+y_test = pd.read_csv(f"hf://datasets/{repo_id}/ytest.csv").values.ravel()
 
 print("HF data loaded")
 # Preprocessing Setup (StandardScaler)
