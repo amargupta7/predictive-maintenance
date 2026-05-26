@@ -47,9 +47,9 @@ files = {
 # Upload all 4 files back to Hugging Face
 api = HfApi(token=hf_token)
 
-for filename in files.keys():
+for filename, file in files.keys():
     api.upload_file(
-        path_or_fileobj=filename,
+        path_or_fileobj=file,
         path_in_repo=filename,
         repo_id='amarg7/predictive_maintenance',
         repo_type="dataset",
