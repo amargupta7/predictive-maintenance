@@ -37,20 +37,22 @@ X_train, X_test, y_train, y_test = train_test_split(
     X, y, test_size=0.20, random_state=42, stratify=y
 )
 
-files = {
-    "X_train.csv": X_train,
-    "X_test.csv": X_test,
-    "y_train.csv": y_train,
-    "y_test.csv": y_test
-}
-
 # Upload all 4 files back to Hugging Face
 api = HfApi(token=hf_token)
+X_train.to_csv("Xtrain.csv", index=False)
+X_test.to_csv("Xtest.csv", index=False)
+y_train.to_csv("ytrain.csv", index=False)
+y_test.to_csv("ytest.csv", index=False)
 
-for filename, file in files.keys():
+# =========================
+# Upload to Hugging Face
+# =========================
+files = ["Xtrain.csv", "Xtest.csv", "ytrain.csv", "ytest.csv"]
+
+for file in files:
     api.upload_file(
         path_or_fileobj=file,
-        path_in_repo=filename,
+        path_in_repo=file,
         repo_id='amarg7/predictive_maintenance',
         repo_type="dataset",
     )
