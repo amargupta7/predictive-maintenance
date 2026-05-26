@@ -51,7 +51,7 @@ for filename in files.keys():
     api.upload_file(
         path_or_fileobj=filename,
         path_in_repo=filename,
-        repo_id=repo_id,
+        repo_id='amarg7/predictive_maintenance',
         repo_type="dataset",
     )
 
