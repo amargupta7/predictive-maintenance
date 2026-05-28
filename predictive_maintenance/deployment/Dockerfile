@@ -14,7 +14,6 @@ RUN apt-get update && apt-get install -y \
 RUN useradd -m -u 1000 user
 USER user
 
-# CRITICAL FIX 1: Set explicit Home and PATH environment variables
 ENV HOME=/home/user \
     PATH=/home/user/.local/bin:$PATH
 
@@ -31,4 +30,4 @@ COPY --chown=user . $HOME/app
 EXPOSE 8501
 
 # Run your application
-CMD ["streamlit", "run", "app.py", "--server.port=8501", "--server.address=0.0.0.0"]
+ENTRYPOINT ["streamlit", "run", "app.py", "--server.port=8501", "--server.address=0.0.0.0"]

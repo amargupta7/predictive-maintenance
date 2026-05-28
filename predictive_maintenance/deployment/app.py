@@ -17,7 +17,7 @@ def load_production_pipeline():
     try:
         # Pulls down from your specific target model repository location
         model_path = hf_hub_download(
-            repo_id="amarg7/engine-condition-predictor", 
+            repo_id="amarg7/engine-condition-predictor",
             filename="model.joblib"
         )
         return joblib.load(model_path)
@@ -63,11 +63,11 @@ if st.button("🚀 Process Telemetry Diagnostics", use_container_width=True):
         # Generate model class probability arrays
         probabilities = pipeline.predict_proba(input_payload)[:, 1]
         raw_prob = probabilities[0]
-        
+
         # Apply the calibrated cost-aware business classification threshold
         BUSINESS_THRESHOLD = 0.45
         prediction = 1 if raw_prob >= BUSINESS_THRESHOLD else 0
-        
+
         # Interface rendering based on structural classification outcomes
         if prediction == 1:
             st.error(f"🚨 **CRITICAL RISK DETECTED: MAINTENANCE MANDATORY** (Failure Likelihood: {raw_prob:.2%})")
