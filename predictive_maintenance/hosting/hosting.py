@@ -7,7 +7,7 @@ HF_TOKEN = os.getenv("HF_TOKEN")
 
 api = HfApi(token=HF_TOKEN)
 
-repo_id = "amarg7/predictive-maintenance-be"
+repo_id = "amarg7/predictive-maintenance"
 repo_type = "space"
 
 # Check if Space exists
