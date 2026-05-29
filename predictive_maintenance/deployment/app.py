@@ -18,7 +18,7 @@ def load_production_pipeline():
         # Pulls down from your specific target model repository location
         model_path = hf_hub_download(
             repo_id="amarg7/engine-condition-predictor",
-            filename="model.joblib"
+            filename="best_predictive_model.joblib"
         )
         return joblib.load(model_path)
     except Exception as e:
